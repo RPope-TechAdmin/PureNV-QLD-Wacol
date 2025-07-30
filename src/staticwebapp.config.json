@@ -1,0 +1,75 @@
+{
+  "trailingSlash": "auto",
+  "routes": [
+    {"route":"/",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "Index.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "Information.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "Lab-Data.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
+    },
+    {
+      "route": "Contact.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "Upload-Lab.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
+    },
+    {
+      "route": "Report-Download.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
+    },
+    {
+      "route": "COC-Suite.html*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "/api/*",
+      "rewrite": "https://jackson-backend-jackson-e0bycnfwgrhzana9.australiaeast-01.azurewebsites.net*",
+      "allowedRoles": ["anonymous"],
+      "headers": {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "*"
+      }
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/Index.html",
+    "exclude": ["Assets/*.{png,jpg,gif}", "/css/*","/js/*","/api/*"]
+  },
+  "responseOverrides": {
+    "400": {
+      "rewrite": "Not-Invited.html"
+    },
+    "401": {
+      "statusCode": 302,
+        "redirect": "/.auth/login/aad"
+    },
+    "403": {
+      "rewrite": "Not-For-You.html"
+    },
+    "404": {
+      "rewrite": "Not-Found.html"
+    }
+  },
+  "globalHeaders": {
+  "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+  "Access-Control-Allow-Origin": "*"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  },
+  "platform": {
+    "apiRuntime": "python:3.8"
+  }
+}

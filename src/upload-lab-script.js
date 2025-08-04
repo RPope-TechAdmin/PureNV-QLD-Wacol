@@ -45,6 +45,11 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
+  if (file.type !== "application/pdf") {
+  warningDiv.textContent = "⚠️ Only PDF files are allowed.";
+  return;
+}
+
   const queryType = document.getElementById('query-type').value;
   warningDiv.textContent = ""; // clear old message
 
@@ -71,23 +76,25 @@ form.addEventListener('submit', async (event) => {
       }
     });
 
+    console.log("➡️ Uploading")
+    
     const text = await response.text();
   let data;
 
   try {
     data = text ? JSON.parse(text) : {};
   } catch (jsonErr) {
-    console.error("❌ JSON parse error:", jsonErr.message);
+    console.log("❌ JSON parse error:", jsonErr.message);
     data = { error: "Invalid JSON response", raw: text };
   }
 
   if (!response.ok) {
-    console.error("🚨 Server error:", data);
+    console.log("🚨 Server error:", data);
     output.textContent = `Upload failed: ${data?.error || "Unknown error"}`;
   } else {
     warningDiv.textContent = "Data uploaded successfully, Thank you!";
   }
 } catch (err) {
-  console.error("🚨 Upload error:", err.message);
+  console.log("🚨 Upload error:", err.message);
   output.textContent = "Upload failed. Network or server error.";
 }})

@@ -45,8 +45,13 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
-  if (file.type !== "application/pdf") {
+  if (selectedFile.type !== "application/pdf") {
   warningDiv.textContent = "⚠️ Only PDF files are allowed.";
+  return;
+}
+
+if (selectedFile.size > 4 * 1024 * 1024) {
+  warningDiv.textContent = "⚠️ File size exceeds 4MB limit.";
   return;
 }
 

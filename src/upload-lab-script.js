@@ -97,7 +97,7 @@ if (selectedFile.size > 4 * 1024 * 1024) {
     console.log("🚨 Server error:", data);
     output.textContent = `Upload failed: ${data?.error || "Unknown error"}`;
   } else {
-    warningDiv.textContent = "Data uploaded successfully, Thank you!";
+    warningDiv.textContent = response;
   }
 } catch (err) {
   console.log("🚨 Upload error:", err.message);

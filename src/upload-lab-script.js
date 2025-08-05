@@ -79,8 +79,7 @@ if (selectedFile.size > 4 * 1024 * 1024) {
       headers: {
         "Accept": "application/json"
       }
-    })
-    .then(response=>response.json());
+    });
 
     console.log("➡️ Uploading")
     

@@ -21,16 +21,16 @@
       "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
     },
     {
-      "route": "Upload-Lab.html*",
-      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
-    },
-    {
       "route": "Report-Download.html*",
       "allowedRoles": ["technical","higherup","authenticated","admin_1"]
     },
     {
       "route": "COC-Suite.html*",
       "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
+    },
+    {
+      "route": "/Secondary Pages*",
+      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
     },
     {
       "route": "/api/*",

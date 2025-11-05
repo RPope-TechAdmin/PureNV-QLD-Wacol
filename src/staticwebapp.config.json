@@ -29,12 +29,8 @@
       "allowedRoles": ["technical","higherup","authenticated","admin_1","operator"]
     },
     {
-      "route": "/Secondary Pages*",
-      "allowedRoles": ["technical","higherup","authenticated","admin_1"]
-    },
-    {
       "route": "/api/*",
-      "rewrite": "https://jackson-backend-jackson-e0bycnfwgrhzana9.australiaeast-01.azurewebsites.net*",
+      "rewrite": "https://wacol-backend-anckchbhh5d9gsd9.australiaeast-01.azurewebsites.net*",
       "allowedRoles": ["anonymous"],
       "headers": {
       "Access-Control-Allow-Origin": "*",

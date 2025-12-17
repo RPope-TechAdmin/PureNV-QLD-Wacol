@@ -572,6 +572,7 @@ html,body{
     font-weight:bold;
     background:#eee;
     padding:1%;
+    margin-left:2%;
     position:absolute;
     top:35%;
     left:39%;
@@ -580,8 +581,10 @@ html,body{
 .twuu-header{
     cursor:pointer;
     font-weight:bold;
+    text-align:center;
     background:#eee;
     padding:1%;
+    width:16.75%;
     position:absolute;
     top:35%;
     right:5%;

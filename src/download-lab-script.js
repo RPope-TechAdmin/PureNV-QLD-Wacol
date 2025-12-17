@@ -53,22 +53,23 @@ document.getElementById("getValues").addEventListener("click", () => {
 
   fetch("https://wacol-backend-anckchbhh5d9gsd9.australiaeast-01.azurewebsites.net/api/lab-data-download", {
     method: "POST",
-    headers: { "Content-Type": "application/json",
-                "Accept": "application/json",
-     },
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
     body: JSON.stringify({ selections, startDate, endDate })
   })
-  .then(res => {
-    if (!res.ok) throw new Error("Server error");
-    return res.blob();
-  })
-  .then(blob => {
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download ="Requested Results.xlsx";
-    a.click();
-  })
+    .then(res => {
+      if (!res.ok) throw new Error("Server error");
+      return res.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Requested Results.xlsx";
+      a.click();
+    })
     .catch(err => {
       alert(err.message);
     })

@@ -1,3 +1,13 @@
+function showLoading() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+  document.querySelector("button").disabled = true;
+}
+
+function hideLoading() {
+  document.getElementById("loadingOverlay").style.display = "none";
+  document.querySelector("button").disabled = false;
+}
+
 document.getElementById("getValues").addEventListener("click", () => {
     const selections = {};
 
@@ -49,6 +59,8 @@ document.getElementById("getValues").addEventListener("click", () => {
   const startDate = document.getElementById("startDate").value;
   const endDate = document.getElementById("endDate").value;
 
+    showLoading();
+
   fetch("https://wacol-backend-anckchbhh5d9gsd9.australiaeast-01.azurewebsites.net/api/lab-data-download", {
     method: "POST",
     headers: { "Content-Type": "application/json",
@@ -67,5 +79,11 @@ document.getElementById("getValues").addEventListener("click", () => {
     a.download ="Requested Results.xlsx";
     a.click();
   })
-  .catch(err => alert(err.message));
+    .catch(err => {
+      alert(err.message);
+    })
+    .finally(() => {
+      // 🔹 ALWAYS HIDE LOADING OVERLAY
+      hideLoading();
+    });
 });

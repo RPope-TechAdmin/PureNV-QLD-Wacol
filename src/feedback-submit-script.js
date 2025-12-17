@@ -1,3 +1,13 @@
+function showLoading() {
+  document.getElementById("loadingOverlay").style.display = "flex";
+  document.querySelector("button").disabled = true;
+}
+
+function hideLoading() {
+  document.getElementById("loadingOverlay").style.display = "none";
+  document.querySelector("button").disabled = false;
+}
+
 function showError(message) {
   const errorDiv = document.getElementById("feedbackError");
   errorDiv.style.display = "block";
@@ -45,4 +55,6 @@ document.getElementById("feedbackForm").addEventListener("submit", async (e) => 
   }
 
   await sendFeedback(name, feedback);
+
+  hideLoading();
 });

@@ -21,16 +21,6 @@ document.getElementById("getValues").addEventListener("click", () => {
         }
     });
 
-    document.querySelectorAll(".options-tclp").forEach(optionGroup => {
-        const groupId = optionGroup.id;
-        const checkboxes = fixtclp.querySelectorAll("input[type='checkbox']:checked:not(.group-select)");
-
-        if (checkboxes.length > 0) {
-            selections[groupId] = [];
-            checkboxes.forEach(cb => selections[groupId].push(cb.value));
-        }
-    });
-
     document.querySelectorAll(".options-twint").forEach(optionGroup => {
         const groupId = optionGroup.id;
         const checkboxes = optionGroup.querySelectorAll("input[type='checkbox']:checked:not(.group-select)");
@@ -59,7 +49,7 @@ document.getElementById("getValues").addEventListener("click", () => {
   const startDate = document.getElementById("startDate").value;
   const endDate = document.getElementById("endDate").value;
 
-    showLoading();
+  showLoading();
 
   fetch("https://wacol-backend-anckchbhh5d9gsd9.australiaeast-01.azurewebsites.net/api/lab-data-download", {
     method: "POST",

@@ -130,6 +130,7 @@ html,body{
     color:#1b96c8;
     font-size:20px;
     text-align:center;
+    padding:0 5%;
 }
 
 .wip{
@@ -382,8 +383,8 @@ html,body{
     justify-content: center;
     text-align: center;
     position:absolute;
+    padding:0 5%;
     top:45%;
-    left:6.5%;
     font-size: 18px;
 }
 
